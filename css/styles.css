@@ -59,13 +59,12 @@ body {
   backdrop-filter: blur(8px);
 }
 .viewer-logo {
-  height: 22px;
+  height: 28px;
   width: auto;
-  max-width: min(118px, 36vw);
+  max-width: min(160px, 42vw);
   object-fit: contain;
   object-position: left center;
   flex: 0 0 auto;
-  margin-right: 4px;
 }
 .viewer-brand {
   font-size: 0.86rem;
