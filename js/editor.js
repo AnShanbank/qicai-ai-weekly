@@ -220,7 +220,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;650&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/styles.css?v=20260818r" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818s" />
   ${themeTag()}
 </head>
 <body>
@@ -231,7 +231,7 @@
     </header>
     <button type="button" class="nav-arrow nav-prev" id="prevBtn" aria-label="上一页">‹</button>
     <button type="button" class="nav-arrow nav-next" id="nextBtn" aria-label="下一页">›</button>
-    <main class="stage">
+    <main class="stage" id="stage">
       <div class="book-shell mode-cover" id="bookShell">
         <div class="book-viewport" id="bookViewport">
         <div id="book">
@@ -246,11 +246,13 @@ ${pages}
       </div>
     </main>
     <footer class="viewer-bottom">
+      <button type="button" class="nav-foot" id="prevBtnFoot" aria-label="上一页">上一页</button>
       <div class="page-indicator"><span id="pageLabel">1</span><span class="sep">/</span><span id="pageTotal">21</span></div>
+      <button type="button" class="nav-foot" id="nextBtnFoot" aria-label="下一页">下一页</button>
     </footer>
   </div>
   <script src="./js/page-flip.browser.js"><\/script>
-  <script src="./js/app.js?v=20260818r"><\/script>
+  <script src="./js/app.js?v=20260818s"><\/script>
 </body>
 </html>`;
 
@@ -337,7 +339,7 @@ ${pages}
     }
     stage.appendChild(document.importNode(viewer, true));
     document.title = "编辑 · " + (doc.title || "AI周刊");
-    await loadScript("./js/app.js?v=20260818r");
+    await loadScript("./js/app.js?v=20260818s");
 
     document.getElementById("btnText").addEventListener("click", () => enableText(!textOn));
     document.getElementById("btnExport").addEventListener("click", exportReadonly);
