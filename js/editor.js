@@ -220,7 +220,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;650&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/styles.css?v=20260818p" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818q" />
   ${themeTag()}
 </head>
 <body>
@@ -250,7 +250,7 @@ ${pages}
     </footer>
   </div>
   <script src="./js/page-flip.browser.js"><\/script>
-  <script src="./js/app.js?v=20260818p"><\/script>
+  <script src="./js/app.js?v=20260818q"><\/script>
 </body>
 </html>`;
 
@@ -337,7 +337,7 @@ ${pages}
     }
     stage.appendChild(document.importNode(viewer, true));
     document.title = "编辑 · " + (doc.title || "AI周刊");
-    await loadScript("./js/app.js?v=20260818p");
+    await loadScript("./js/app.js?v=20260818q");
 
     document.getElementById("btnText").addEventListener("click", () => enableText(!textOn));
     document.getElementById("btnExport").addEventListener("click", exportReadonly);
