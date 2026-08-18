@@ -30,8 +30,8 @@
     const { w, h } = viewSize();
     const mobile = w <= 900;
     if (mobile) {
-      const pageW = Math.max(260, w - 20);
-      const pageH = Math.max(360, h - 48 - 40 - 12);
+      const pageW = Math.max(260, w - 28);
+      const pageH = Math.max(340, h - 48 - 40 - 22);
       return {
         pageWidth: pageW,
         spreadWidth: pageW,
