@@ -282,9 +282,9 @@
       autoSize: false,
       maxShadowOpacity: mobile ? 0 : 0.28,
       showCover: !mobile,
-      mobileScrollSupport: true,
-      swipeDistance: 30,
-      useMouseEvents: !mobile,
+      mobileScrollSupport: false,
+      swipeDistance: 20,
+      useMouseEvents: true,
       disableFlipByClick: !!(window.AIWeeklyConfig && window.AIWeeklyConfig.disableFlipByClick),
     });
 
@@ -339,14 +339,6 @@
     } catch (_) {}
     syncAll({ data: idx });
   }
-
-  document.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!e.target.closest("#book")) e.preventDefault();
-    },
-    { passive: false }
-  );
 
   lastLayoutW = viewSize().w;
   lastLayoutH = viewSize().h;
