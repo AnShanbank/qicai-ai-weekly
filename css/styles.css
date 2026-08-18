@@ -58,7 +58,15 @@ body {
   border-bottom: 1px solid rgba(30, 80, 90, 0.08);
   backdrop-filter: blur(8px);
 }
-.viewer-logo { height: 32px; width: auto; max-width: min(170px, 46vw); object-fit: contain; flex: 0 1 auto; }
+.viewer-logo {
+  height: 22px;
+  width: auto;
+  max-width: min(118px, 36vw);
+  object-fit: contain;
+  object-position: left center;
+  flex: 0 0 auto;
+  margin-right: 4px;
+}
 .viewer-brand {
   font-size: 0.86rem;
   color: var(--muted);
