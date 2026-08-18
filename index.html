@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>七彩化学染颜料事业部 AI周刊 · 第01期</title>
+  <meta name="description" content="人物专访、AI科普、事业部案例与行业标杆。" />
+  <link rel="icon" href="./assets/share-cover.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;650&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818p" />
+</head>
+<body>
+  <div class="viewer">
+    <header class="viewer-top">
+      <img class="viewer-logo" src="./assets/logo-black.png" alt="HIFICHEM" />
+      <div class="viewer-brand">AI 周刊 · 第 01 期</div>
+    </header>
+
+    <button type="button" class="nav-arrow nav-prev" id="prevBtn" aria-label="上一页">‹</button>
+    <button type="button" class="nav-arrow nav-next" id="nextBtn" aria-label="下一页">›</button>
+
+    <main class="stage">
+      <div class="book-shell mode-cover" id="bookShell">
+        <div class="book-viewport" id="bookViewport">
+        <div id="book">
+
+          <!-- 1 封面（合上时单独居中显示） -->
+          <div class="page page--cover">
+            <div class="fill cover">
+              <div class="cover-head">
+                <h1>七彩化学</h1>
+                <div class="cover-issue"><strong>01期</strong><span>2026年AI周刊</span></div>
+              </div>
+              <div class="cover-sub">
+                <span>人物专访</span><span>AI 科普</span><span>事业部案例</span><span>行业标杆</span>
+              </div>
+              <div class="cover-hero">
+                <img src="./assets/photos/cover-booth.jpg" alt="" />
+                <div class="cover-tags">
+                  <div class="ctag c1"><b>人物专访</b><span>管理者与实践者</span></div>
+                  <div class="ctag c2"><b>AI 科普</b><span>MCP · RAG · Agent</span></div>
+                  <div class="ctag c3"><b>事业部案例</b><span>AI 赋能工作法</span></div>
+                  <div class="ctag c4"><b>行业标杆</b><span>外部优秀实践</span></div>
+                </div>
+                <div class="cover-foot">
+                  <div>鞍山七彩化学股份有限公司 · 染颜料事业部</div>
+                  <div>MORE THAN YELLOW AND ORANGE</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2-3 目录 -->
+          <div class="page">
+            <div class="fill sheet">
+              <h2 class="toc-cn">目录</h2>
+              <img class="toc-photo" src="./assets/photos/toc-booth.jpg" alt="" />
+              <div class="toc-meta">
+                <p><strong>鞍山七彩化学股份有限公司</strong></p>
+                <p>主办：染颜料事业部 · AI 小组</p>
+                <p>编辑：曹金裕</p>
+              </div>
+              <span class="pn left">2</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet sheet--blue">
+              <h2 class="toc-en">CONTENTS</h2>
+              <div class="toc-grid">
+                <div class="toc-item"><i>01</i><div><b>卷首寄语</b><span>AI 落在工位上</span></div></div>
+                <div class="toc-item"><i>02</i><div><b>人物专访</b><span>运营管理部 · AI 工作法</span></div></div>
+                <div class="toc-item"><i>03</i><div><b>人物专访</b><span>一线质量岗位实践</span></div></div>
+                <div class="toc-item"><i>04</i><div><b>AI 科普</b><span>MCP 是什么</span></div></div>
+                <div class="toc-item"><i>05</i><div><b>AI 科普</b><span>RAG · Agent 速览</span></div></div>
+                <div class="toc-item"><i>06</i><div><b>事业部案例</b><span>运营管理场景提效</span></div></div>
+                <div class="toc-item"><i>07</i><div><b>事业部案例</b><span>质量报告起草提效</span></div></div>
+                <div class="toc-item"><i>08</i><div><b>行业标杆</b><span>化工领域 AI 实践</span></div></div>
+              </div>
+              <span class="pn light">3</span>
+            </div>
+          </div>
+
+          <!-- 4-5 卷首 -->
+          <div class="page">
+            <div class="fill chapter">
+              <img class="ch-img" src="./assets/photos/editorial-plant.jpg" alt="" />
+              <div class="ch-mask"></div>
+              <div class="ch-copy">
+                <div class="ch-kicker">01 / Foreword</div>
+                <div class="ch-num">01</div>
+                <h2>卷首寄语</h2>
+                <p class="ch-lead">AI 不是远方的风口，是工位上每天能省下来的一小时。</p>
+                <ul class="ch-points">
+                  <li>为什么事业部现在必须用 AI</li>
+                  <li>AI 小组要推广什么</li>
+                  <li>这本周刊怎么读、怎么用</li>
+                </ul>
+                <div class="ch-foot">染颜料事业部 · AI 小组</div>
+              </div>
+              <span class="pn light left">4</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">AI 已经不是可选项</h2>
+              <div class="art-body">
+                <p>同一条产线、同一份报告、同一场例会，谁先把重复劳动交给工具，谁就能把时间还给现场和客户。染颜料事业部要做的，不是追新名词，而是让 AI 成为工位习惯。</p>
+                <p class="em">AI 小组办这本周刊，就是为了把「能用、敢用、会用」推到每个人手里：讲清为什么重要，拆开怎么上手，记下谁先跑通。</p>
+                <p>我们相信，AI 不会替代判断、安全和承诺，但会替代翻文件夹、对齐格式、写第一稿这类消耗。省下来的时间，应该用在走现场、核数据、拍板上。</p>
+                <p>欢迎把试用记录、提示词模板、踩坑笔记投给 AI 小组。优秀内容，优先进入下期。</p>
+              </div>
+<span class="pn">5</span>
+            </div>
+          </div>
+
+          <!-- 6-9 人物专访（放最前） -->
+          <div class="page">
+            <div class="fill chapter dusk">
+              <img class="ch-img" src="./assets/photos/interview-ceo.png" alt="" />
+              <div class="ch-mask"></div>
+              <div class="ch-copy">
+                <div class="ch-kicker">02 / Interview</div>
+                <div class="ch-num">02</div>
+                <h2>人物专访</h2>
+                <p class="ch-lead">把重复劳动交给工具，把拍板留在自己手里。</p>
+                <ul class="ch-points">
+                  <li>受访者：赵启年 · 运营管理部部长</li>
+                  <li>三个固定场景，一套迭代方法</li>
+                  <li>一线质量岗：骨架先行</li>
+                </ul>
+                <div class="ch-foot">人物 · 可复述 · 可复制</div>
+              </div>
+              <span class="pn light left">6</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <div class="badge">2026年08周刊</div>
+              <h2 class="art-title">「AI 不是替我决策，是替我抢回整块时间」</h2>
+              <div class="meta">
+                <div><span>受访者</span><b>赵启年</b></div>
+                <div><span>职务</span><b>运营管理部部长</b></div>
+              </div>
+              <div class="art-body">
+                <p><strong>周刊：</strong>您是从什么时候开始把 AI 放进日常工作的？</p>
+                <p><strong>赵启年：</strong>起初和很多人一样，偶尔用来润色邮件、整理会议纪要。真正觉得「值得持续投入」，是某次周例会前——三份经营分析材料要在两天内汇总，以往至少占去大半天做格式统一和表述对齐。那次我试着把各科室的原始数据（已脱敏）按固定模板交给助手出初稿，自己只做核对和结论调整，整体节省了近一半准备时间。</p>
+                <p>从那以后，我不再问「AI 能不能写得更漂亮」，而是问「这件事里，哪一段是重复劳动、哪一段必须我拍板」。前者交给工具，后者留给自己。</p>
+              </div>
+<span class="pn">7</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">三个固定场景，和一套迭代方法</h2>
+              <div class="art-body">
+                <p><strong>场景一：跨部门沟通材料。</strong>对外函件、对上汇报的初稿，先让 AI 按「背景—现状—诉求—下一步」生成骨架，再人工补数据和口径。赵启年强调：涉及客户承诺、交期、价格的句子，一律手改定稿。</p>
+                <p><strong>场景二：周例会与月度复盘。</strong>把各线提交的要点粘贴进助手，要求「合并同类项、标出待决策项、列出需现场讨论的三件事」。他说这相当于多了一个「不会漏项的整理员」，但讨论顺序和拍板仍由他主持。</p>
+                <p><strong>场景三：制度与流程问答。</strong>新人问「这个流程在哪份文件里」，他不再亲自翻文件夹，而是先查内部知识助手（试点中），定位原文后再回复。目的是让「找文件」不再占用管理岗时间。</p>
+                <p class="em">迭代方法很简单：每次觉得「这次用得顺」，就把提示词和输入样例存进共享文档；不顺的，写一句「哪里不对」方便下次改。三个月下来，团队里已有七八个可复用模板。</p>
+              </div>
+<span class="pn">8</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">一线试用者：质量部的「骨架先行」</h2>
+              <div class="meta">
+                <div><span>受访者</span><b>林晓雯</b></div>
+                <div><span>部门</span><b>质量管理部</b></div>
+              </div>
+              <div class="art-body">
+                <p>林晓雯的用法更「窄」也更稳：只用在检测报告的结构起草。同类报告反复套格式、查历史表述，过去一份骨架往往要 40 分钟；现在按模板让助手生成章节框架与表述候选，她核对数据与结论后定稿，起草阶段压缩到约 12 分钟。</p>
+                <p>她的原则和赵启年一致：「草稿可以要，签字我来。」涉密配方、未公开客户信息从不进外部模型。她沉淀了三条提示词，已分享给同科室试用。</p>
+                <blockquote>「它像个很勤快的实习生——不会替你做判定，但能把桌子收拾整齐，让你专心看数据。」</blockquote>
+              </div>
+<span class="pn">9</span>
+            </div>
+          </div>
+
+          <!-- 10-13 AI科普 -->
+          <div class="page">
+            <div class="fill chapter">
+              <img class="ch-img" src="./assets/photos/ai-laptop.jpg" alt="" />
+              <div class="ch-mask"></div>
+              <div class="ch-copy">
+                <div class="ch-kicker">03 / Primer</div>
+                <div class="ch-num">03</div>
+                <h2>AI 科普</h2>
+                <p class="ch-lead">听懂三个词，再用起来才不发怵。</p>
+                <ul class="ch-points">
+                  <li>MCP：模型怎么接工具和数据</li>
+                  <li>RAG：带着资料答题</li>
+                  <li>Agent：按流程办事的助手</li>
+                </ul>
+                <div class="ch-foot">给非算法同事 · 能复述即可</div>
+              </div>
+              <span class="pn light left">10</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">MCP 是什么？和「接工具」有什么关系</h2>
+              <div class="art-body">
+                <p><strong>MCP</strong>（Model Context Protocol，模型上下文协议）是一套开放标准，用来规定「大模型如何安全、统一地连接外部工具和数据源」。可以把它理解成 USB-C：以前每个 AI 产品接数据库、接企业系统，接口各搞一套；有了 MCP，工具提供方按同一套「插头」开发，模型侧按同一套「插座」接入。</p>
+                <p>对事业部同事来说，不必记协议细节，只需知道三点：</p>
+                <p><strong>第一，</strong>MCP 解决的是「模型怎么读到最新、可用的信息」——例如制度库、工单系统、内部表格，而不是只靠训练时的旧知识。</p>
+                <p><strong>第二，</strong>它强调权限与边界，哪些能读、哪些能写，由企业 IT 与业务一起配置，不是模型想连什么就连什么。</p>
+                <p><strong>第三，</strong>市面上听到的「AI 接飞书 / 接数据库 / 接知识库」，很多就是在 MCP 或类似思路上做的集成。我们试点中的文档助手、场景池，未来也可能通过标准接口扩展能力。</p>
+              </div>
+<span class="pn">11</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">RAG 与 Agent：两个常一起出现的词</h2>
+              <div class="art-body">
+                <p><strong>RAG</strong>（检索增强生成）：先在你的文档库里「检索」相关段落，再让模型「生成」回答。适合制度问答、SOP 查询、历史报告表述参考。好处是回答有据可查；前提是文档要整理好、权限要控好。</p>
+                <p><strong>Agent</strong>（智能体）：在「会聊天」之外，还能按步骤调用工具——例如先查表、再写邮件、再创建待办。适合多步骤、有规则的任务，但仍需人工设定边界和复核关键节点。</p>
+                <p class="em">简单记：RAG 像「带着资料答题」；Agent 像「会按流程办事的助手」。多数事业部场景，从 RAG 类「查得到、答有据」起步更稳；Agent 类自动化放在有明确 SOP、可回滚的流程上试点。</p>
+                <p>无论哪种，都绕不开三条红线：脱敏输入、人工复核对外输出、涉密配方与未公开合同不进外部模型。</p>
+              </div>
+<span class="pn">12</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">大模型三问（给非算法同事）</h2>
+              <div class="art-body">
+                <p><strong>它会什么？</strong>归纳文字、改写润色、按模板起草、对照清单查漏、把口语整理成条理清晰的说明。适合「有样例、有规则、可核验」的信息工作。</p>
+                <p><strong>它不会什么？</strong>不自动保证事实正确，不懂你们釜里的真实工况，不能替代安全规程与合规审批，也不能替你在合同上签字。</p>
+                <p><strong>怎么用才安全？</strong>脱敏 → 说清角色与输出格式 → 要依据或要步骤 → 人工复核 → 好的提示词沉淀下来。好用法 = 清晰任务 + 可核验结果 + 人负责最终决策。</p>
+              </div>
+<span class="pn">13</span>
+            </div>
+          </div>
+
+          <!-- 14-17 事业部案例 -->
+          <div class="page">
+            <div class="fill chapter cool">
+              <img class="ch-img" src="./assets/photos/case-lab.jpg" alt="" />
+              <div class="ch-mask"></div>
+              <div class="ch-copy">
+                <div class="ch-kicker">04 / Cases</div>
+                <div class="ch-num">04</div>
+                <h2>事业部案例</h2>
+                <p class="ch-lead">内部先跑通，再写成别人能照着做的清单。</p>
+                <ul class="ch-points">
+                  <li>运营管理：例会材料与跨部门函件</li>
+                  <li>质量管理：报告骨架先行</li>
+                  <li>可复制，才算真正落地</li>
+                </ul>
+                <div class="ch-foot">内部实践 · 可推广</div>
+              </div>
+              <span class="pn light left">14</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">案例一：运营管理的 AI 闭环</h2>
+              <div class="art-body">
+                <p>以下根据运营管理部赵启年近三个月的试用整理，为示例化叙述，数据为内部估算，供兄弟科室参考复制思路。</p>
+                <p><strong>背景。</strong>事业部日常需同步生产、质量、供应链、客户等多线信息。以往周例会材料分散在邮件、表格和口头反馈里，汇总耗时长，且容易遗漏「待决策项」。</p>
+                <p><strong>做法。</strong>建立「原始要点 → AI 结构化 → 人工定稿 → 会后沉淀」四步：各线按统一格式提交 5 条以内要点；助手合并同类项并标红待决策项；例会前 30 分钟只做核对与排序；会后把定稿结论与提示词版本存入共享库。</p>
+                <p><strong>迭代。</strong>第一版提示词过于笼统，输出冗长；第二版增加「最多三页、必须列出待决策项」；第三版加入「区分事实与建议，建议单独成段」。每版保留样例输入输出，方便他人套用。</p>
+              </div>
+<span class="pn">15</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">案例一（续）：效果与可复制清单</h2>
+              <div class="art-body">
+                <p><strong>效果（估算）。</strong>周例会材料准备时间从平均约 4 小时降至约 2 小时；跨部门函件初稿从「从零写」变为「改骨架」，单份节省 20～40 分钟。更重要的变化是：管理者把省下的时间用在现场走线和拍板上，而不是埋在格式里。</p>
+                <p><strong>可复制清单。</strong>① 统一输入格式（科室、事项、数据、诉求）；② 固定输出模板（背景、现状、待决策、建议）；③ 共享提示词版本库；④ 红线培训（什么不能粘贴进模型）；⑤ 每月一次「顺/不顺」复盘，只改一条。</p>
+                <p class="em">AI 小组正在把该流程整理成「管理者场景卡」，欢迎其他科室在此基础上改成自己的版本。</p>
+              </div>
+<span class="pn">16</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">案例二：质量报告起草 · 骨架先行</h2>
+              <div class="art-body">
+                <p>质量管理部林晓雯的实践，代表「一线窄场景、深使用」路径：不追求一步到位全流程智能，只把最痛、最重复的一段交给 AI。</p>
+                <p>她梳理了同类检测报告的章节结构、常用表述与必查项清单，写成三条提示词：一类用于「框架生成」，一类用于「表述润色」，一类用于「对照必查项查漏」。每次使用前，只粘贴已脱敏的检测数据与结论要点，生成后再逐条核对原始记录。</p>
+                <p>科室内部小范围试用后，起草阶段平均耗时下降约 70%（自估），发出前仍 100% 人工复核。下一步计划：把必查项清单与提示词绑定，减少漏项。</p>
+                <p>该案例已纳入 AI 小组「场景池」，优先级：可复制到其他需大量同类报告的岗位。</p>
+              </div>
+<span class="pn">17</span>
+            </div>
+          </div>
+
+          <!-- 18-20 行业标杆 -->
+          <div class="page">
+            <div class="fill chapter">
+              <img class="ch-img" src="./assets/photos/toc-booth.jpg" alt="" />
+              <div class="ch-mask"></div>
+              <div class="ch-copy">
+                <div class="ch-kicker">05 / Benchmark</div>
+                <div class="ch-num">05</div>
+                <h2>行业标杆</h2>
+                <p class="ch-lead">外面怎么做，我们先抄能抄的三步。</p>
+                <ul class="ch-points">
+                  <li>质量视觉 · 供应链预警</li>
+                  <li>制度知识助手</li>
+                  <li>有对比、有清单，才进周刊</li>
+                </ul>
+                <div class="ch-foot">外部优秀实践 · 对标</div>
+              </div>
+              <span class="pn light left">18</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">化工与制造领域：三类常见落地方向</h2>
+              <div class="art-body">
+                <p><strong>质量视觉。</strong>部分材料与化工企业用视觉模型辅助识别包装破损、标签错误、色差异常，把「全检靠眼」变成「机器初筛 + 人工复判」，降低漏检与疲劳误判。落地关键：样本积累、误报率可接受、复判流程清晰。</p>
+                <p><strong>供应链与计划。</strong>结合历史订单、交期与异常事件做短期预测与预警，帮助计划岗更早发现「可能断供 / 可能积压」信号。落地关键：数据质量、与现有 ERP/计划系统衔接，避免「预警多了没人看」。</p>
+                <p><strong>工艺与制度知识助手。</strong>把 SOP、制度、培训材料做成可检索知识库，新人问「这一步注意事项是什么」能定位原文；写报告时可引用条款，减少翻文件夹时间。落地关键：文档更新机制、权限分级、回答必须带出处。</p>
+              </div>
+<span class="pn">19</span>
+            </div>
+          </div>
+          <div class="page">
+            <div class="fill sheet article">
+              <h2 class="art-title">对标启示：我们能先抄哪几步</h2>
+              <div class="art-body">
+                <p>外部案例未必能原样照搬，但有三步值得直接借鉴：</p>
+                <p><strong>第一步，</strong>先选「文案与知识检索」类低风险场景，而不是一上来做全流程自动化。与赵启年、林晓雯的路径一致：窄场景、深使用、可复盘。</p>
+                <p><strong>第二步，</strong>每例必须有前后对比与可复制清单——谁在用、输入什么、输出什么、谁复核、省了什么。没有对比，就不进周刊、不进推广手册。</p>
+                <p><strong>第三步，</strong>成功一个，写成场景卡，在兄弟科室推广；失败一个，也要写「为什么不行」，避免重复踩坑。</p>
+                <p class="em">下期周刊继续征集：你在现场用 AI 解决了哪一件「每周重复 ≥3 次」的事？投稿请联系 AI 小组。</p>
+              </div>
+<span class="pn">20</span>
+            </div>
+          </div>
+
+          <!-- 21 封底 -->
+          <div class="page page--back">
+            <div class="fill back">
+              <img src="./assets/logo-white.png" alt="" />
+              <h2>下一周，把 AI 写进工位习惯</h2>
+              <p>AI 周刊不生产概念，只收集「用起来了」的证据。</p>
+              <div class="back-meta">
+                鞍山七彩化学股份有限公司<br />
+                染颜料事业部 · AI 周刊 · 第 01 期<br />
+                HIFICHEM · more than Yellow and Orange
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>
+        <div class="book-gutter" id="bookGutter" aria-hidden="true"></div>
+        <div class="book-spine-cover" id="bookSpineCover" aria-hidden="true"></div>
+        <div class="book-edge book-edge--left" id="bookEdgeLeft" aria-hidden="true"></div>
+        <div class="book-edge book-edge--right" id="bookEdgeRight" aria-hidden="true"></div>
+        <div class="book-edge book-edge--bottom" id="bookEdgeBottom" aria-hidden="true"></div>
+      </div>
+    </main>
+
+    <footer class="viewer-bottom">
+      <div class="page-indicator"><span id="pageLabel">1</span><span class="sep">/</span><span id="pageTotal">21</span></div>
+    </footer>
+  </div>
+
+  <script src="./js/page-flip.browser.js"></script>
+  <script src="./js/app.js?v=20260818p"></script>
+</body>
+</html>
