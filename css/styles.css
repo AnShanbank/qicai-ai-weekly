@@ -367,9 +367,11 @@ body {
   align-items: flex-start;
 }
 .cover-head h1 {
-  font-size: 1.85rem;
+  font-size: 1.45rem;
   color: var(--blue);
   font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 .cover-issue { text-align: right; }
 .cover-issue strong {
