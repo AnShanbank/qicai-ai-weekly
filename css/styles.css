@@ -373,6 +373,13 @@ body {
   letter-spacing: 0.02em;
   line-height: 1.2;
 }
+.cover-org {
+  margin-top: 4px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  letter-spacing: 0.12em;
+}
 .cover-issue { text-align: right; }
 .cover-issue strong {
   display: block;
