@@ -217,10 +217,7 @@
   <title>${title}</title>
   <meta name="description" content="人物专访、AI科普、事业部案例与行业标杆。" />
   <link rel="icon" href="./assets/share-cover.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;650&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/styles.css?v=20260818t" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818u" />
   ${themeTag()}
 </head>
 <body>
@@ -252,7 +249,7 @@ ${pages}
     </footer>
   </div>
   <script src="./js/page-flip.browser.js"><\/script>
-  <script src="./js/app.js?v=20260818t"><\/script>
+  <script src="./js/app.js?v=20260818u"><\/script>
 </body>
 </html>`;
 
@@ -339,7 +336,7 @@ ${pages}
     }
     stage.appendChild(document.importNode(viewer, true));
     document.title = "编辑 · " + (doc.title || "AI周刊");
-    await loadScript("./js/app.js?v=20260818t");
+    await loadScript("./js/app.js?v=20260818u");
 
     document.getElementById("btnText").addEventListener("click", () => enableText(!textOn));
     document.getElementById("btnExport").addEventListener("click", exportReadonly);
