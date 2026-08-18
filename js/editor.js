@@ -215,16 +215,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title}</title>
-  <meta name="description" content="属于七彩人自己的期刊！" />
+  <meta name="description" content="属于染颜料事业部自己的期刊！" />
   <meta itemprop="name" content="${title}" />
-  <meta itemprop="description" content="属于七彩人自己的期刊！" />
+  <meta itemprop="description" content="属于染颜料事业部自己的期刊！" />
   <meta itemprop="image" content="https://hifichem.github.io/qicai-ai-weekly/assets/share-cover.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="属于七彩人自己的期刊！" />
+  <meta property="og:description" content="属于染颜料事业部自己的期刊！" />
   <meta property="og:image" content="https://hifichem.github.io/qicai-ai-weekly/assets/share-cover.jpg" />
   <link rel="icon" href="./assets/share-cover.png" />
-  <link rel="stylesheet" href="./css/styles.css?v=20260818u" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818v" />
   ${themeTag()}
 </head>
 <body>
@@ -256,7 +256,7 @@ ${pages}
     </footer>
   </div>
   <script src="./js/page-flip.browser.js"><\/script>
-  <script src="./js/app.js?v=20260818u"><\/script>
+  <script src="./js/app.js?v=20260818v"><\/script>
 </body>
 </html>`;
 
@@ -343,7 +343,7 @@ ${pages}
     }
     stage.appendChild(document.importNode(viewer, true));
     document.title = "编辑 · " + (doc.title || "AI周刊");
-    await loadScript("./js/app.js?v=20260818u");
+    await loadScript("./js/app.js?v=20260818v");
 
     document.getElementById("btnText").addEventListener("click", () => enableText(!textOn));
     document.getElementById("btnExport").addEventListener("click", exportReadonly);
