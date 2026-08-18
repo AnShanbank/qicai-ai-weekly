@@ -224,13 +224,13 @@
   <meta property="og:description" content="汇集人物专访、AI科普、事业部案例与行业标杆" />
   <meta property="og:image" content="https://hifichem.github.io/qicai-ai-weekly/assets/share-cover.jpg" />
   <link rel="icon" href="./assets/share-cover.png" />
-  <link rel="stylesheet" href="./css/styles.css?v=20260818y" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818z" />
   ${themeTag()}
 </head>
 <body>
   <div class="viewer">
     <header class="viewer-top">
-      <img class="viewer-logo" src="./assets/logo-header.png?v=20260818y" alt="HIFICHEM" />
+      <img class="viewer-logo" src="./assets/logo-header.png?v=20260818z" alt="HIFICHEM" />
       <div class="viewer-brand">${brand ? brand.innerHTML : "AI 周刊"}</div>
     </header>
     <button type="button" class="nav-arrow nav-prev" id="prevBtn" aria-label="上一页">‹</button>
@@ -256,7 +256,7 @@ ${pages}
     </footer>
   </div>
   <script src="./js/page-flip.browser.js"><\/script>
-  <script src="./js/app.js?v=20260818y"><\/script>
+  <script src="./js/app.js?v=20260818z"><\/script>
 </body>
 </html>`;
 
@@ -343,7 +343,7 @@ ${pages}
     }
     stage.appendChild(document.importNode(viewer, true));
     document.title = "编辑 · " + (doc.title || "AI周刊");
-    await loadScript("./js/app.js?v=20260818y");
+    await loadScript("./js/app.js?v=20260818z");
 
     document.getElementById("btnText").addEventListener("click", () => enableText(!textOn));
     document.getElementById("btnExport").addEventListener("click", exportReadonly);
