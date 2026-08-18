@@ -215,7 +215,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title}</title>
-  <meta name="description" content="人物专访、AI科普、事业部案例与行业标杆。" />
+  <meta name="description" content="属于七彩人自己的期刊！" />
+  <meta itemprop="name" content="${title}" />
+  <meta itemprop="description" content="属于七彩人自己的期刊！" />
+  <meta itemprop="image" content="https://hifichem.github.io/qicai-ai-weekly/assets/share-cover.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="属于七彩人自己的期刊！" />
+  <meta property="og:image" content="https://hifichem.github.io/qicai-ai-weekly/assets/share-cover.jpg" />
   <link rel="icon" href="./assets/share-cover.png" />
   <link rel="stylesheet" href="./css/styles.css?v=20260818u" />
   ${themeTag()}
