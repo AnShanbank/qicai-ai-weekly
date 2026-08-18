@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>编辑 · AI周刊</title>
+  <link rel="icon" href="./assets/share-cover.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;650&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818p" />
+  <link rel="stylesheet" href="./css/editor.css?v=20260818p" />
+</head>
+<body>
+  <div class="ed-app">
+    <aside class="ed-side">
+      <h1>周刊编辑</h1>
+      <p class="ed-lead">在这里改文字、换图、调颜色。改完点「导出只读 H5」，发给同事的是不能再改的阅读页。</p>
+
+      <h2>文字</h2>
+      <button type="button" class="ed-btn ghost" id="btnText">启用文字编辑</button>
+      <p class="ed-hint">启用后点标题/正文即可改。用左右箭头翻页，避免点页面翻页误触。</p>
+
+      <h2>图片</h2>
+      <p class="ed-hint" id="targetHint">先点书里要改的那一页（左页或右页都可以）。</p>
+      <div class="ed-split">
+        <button type="button" class="ed-btn ghost" id="btnBannerL">底部大图·左页</button>
+        <button type="button" class="ed-btn ghost" id="btnBannerR">底部大图·右页</button>
+      </div>
+      <p class="ed-hint">白底文章在右边时，请点「右页」。插入后可调上部渐变和上下取景。</p>
+      <div class="ed-split">
+        <button type="button" class="ed-btn ghost" id="btnInsetL">小图·左绕排</button>
+        <button type="button" class="ed-btn ghost" id="btnInsetR">小图·右绕排</button>
+      </div>
+      <p class="ed-hint">小图插到当前点中的白页；未点时自动选左右两页里的白底页。</p>
+      <input id="imgFile" type="file" accept="image/*" hidden />
+
+      <div id="mediaTools" class="ed-media" hidden>
+        <h2>选中的图</h2>
+        <button type="button" class="ed-btn ghost" id="btnReplaceSel">替换这张图</button>
+        <label class="ed-row" id="fadeRow"><span>上部渐变</span><span id="fadeVal">28</span></label>
+        <input id="fadeSize" type="range" min="0" max="100" value="28" />
+        <p class="ed-hint" id="fadeHint">0 无渐变，100 铺满整张图。白色从顶部淡入照片。</p>
+        <label class="ed-row"><span>上下取景</span><span id="posVal">50</span></label>
+        <input id="posY" type="range" min="0" max="100" value="50" />
+        <p class="ed-hint">长图只显示一部分时：0 看顶部，50 看中间，100 看底部。</p>
+      </div>
+
+      <h2>样式</h2>
+      <label>主色</label>
+      <input id="colorBlue" type="color" value="#2f7dd1" />
+      <label>点缀色</label>
+      <input id="colorOrange" type="color" value="#f08a24" />
+      <label>强调金</label>
+      <input id="colorGold" type="color" value="#f2c14e" />
+      <label class="ed-row"><span>标题字号</span><span id="sizeTitleVal">1.15</span></label>
+      <input id="sizeTitle" type="range" min="0.9" max="1.6" step="0.05" value="1.15" />
+      <label class="ed-row"><span>正文字号</span><span id="sizeBodyVal">0.82</span></label>
+      <input id="sizeBody" type="range" min="0.7" max="1.05" step="0.02" value="0.82" />
+
+      <h2>发布</h2>
+      <button type="button" class="ed-btn gold" id="btnExport">导出只读 H5</button>
+      <p class="ed-hint">下载的文件请放在本「AI周刊」文件夹里打开，才能读到图片和翻页脚本。</p>
+      <a class="ed-link" href="./index.html">打开读者预览（不可编辑）</a>
+    </aside>
+    <div class="ed-main" id="editorStage"></div>
+  </div>
+  <div class="ed-toast" id="edToast"></div>
+
+  <script src="./js/page-flip.browser.js"></script>
+  <script src="./js/editor.js?v=20260818p"></script>
+</body>
+</html>
