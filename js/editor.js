@@ -224,7 +224,7 @@
   <meta property="og:description" content="属于染颜料事业部自己的期刊！" />
   <meta property="og:image" content="https://hifichem.github.io/qicai-ai-weekly/assets/share-cover.jpg" />
   <link rel="icon" href="./assets/share-cover.png" />
-  <link rel="stylesheet" href="./css/styles.css?v=20260818v" />
+  <link rel="stylesheet" href="./css/styles.css?v=20260818w" />
   ${themeTag()}
 </head>
 <body>
@@ -256,7 +256,7 @@ ${pages}
     </footer>
   </div>
   <script src="./js/page-flip.browser.js"><\/script>
-  <script src="./js/app.js?v=20260818v"><\/script>
+  <script src="./js/app.js?v=20260818w"><\/script>
 </body>
 </html>`;
 
@@ -343,7 +343,7 @@ ${pages}
     }
     stage.appendChild(document.importNode(viewer, true));
     document.title = "编辑 · " + (doc.title || "AI周刊");
-    await loadScript("./js/app.js?v=20260818v");
+    await loadScript("./js/app.js?v=20260818w");
 
     document.getElementById("btnText").addEventListener("click", () => enableText(!textOn));
     document.getElementById("btnExport").addEventListener("click", exportReadonly);
