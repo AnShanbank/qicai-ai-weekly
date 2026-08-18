@@ -31,7 +31,11 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 52px minmax(0, 1fr) 44px;
+  grid-template-rows: 52px minmax(0, 1fr) 48px;
+  grid-template-areas:
+    "top"
+    "stage"
+    "bottom";
   position: relative;
   overflow: hidden;
   background:
@@ -41,6 +45,7 @@ body {
 }
 
 .viewer-top {
+  grid-area: top;
   z-index: 30;
   display: flex;
   align-items: center;
@@ -66,10 +71,11 @@ body {
 }
 
 .nav-arrow {
-  position: absolute;
-  top: 50%;
+  grid-area: stage;
+  justify-self: start;
+  align-self: center;
+  position: relative;
   z-index: 40;
-  transform: translateY(-50%);
   width: 46px;
   height: 46px;
   border: none;
@@ -86,16 +92,18 @@ body {
   touch-action: manipulation;
 }
 .nav-arrow:hover { color: var(--orange); background: #fff; }
-.nav-prev { left: 14px; }
-.nav-next { right: 14px; }
+.nav-prev { margin-left: 10px; justify-self: start; }
+.nav-next { margin-right: 10px; justify-self: end; }
 
 .stage {
+  grid-area: stage;
   min-height: 0;
   min-width: 0;
   display: grid;
   place-items: center;
   padding: 12px 60px 18px;
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 /* —— 书本 —— */
@@ -117,16 +125,20 @@ body {
   height: 100%;
   box-shadow: none;
   background: transparent;
+  position: relative;
   touch-action: none;
 }
 
-.stf__item {
-  background-color: #fff;
-  border: 0;
-  outline: 0;
+.stf__wrapper {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .stf__block {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
   background: transparent !important;
 }
 
@@ -720,14 +732,35 @@ blockquote {
 .back-meta { margin-top: 16px; font-size: 0.76rem; opacity: 0.75; line-height: 1.8; }
 
 .viewer-bottom {
-  z-index: 30;
-  display: grid;
-  place-items: center;
+  grid-area: bottom;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   min-width: 0;
+  padding: 0 10px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.92);
   border-top: 1px solid rgba(30, 80, 90, 0.08);
 }
+.nav-foot {
+  flex: 0 0 auto;
+  min-width: 72px;
+  height: 34px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--blue-deep);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+.nav-foot:active { opacity: 0.85; }
 .page-indicator {
   font-size: 0.9rem;
   font-weight: 600;
@@ -737,20 +770,10 @@ blockquote {
 .page-indicator .sep { margin: 0 8px; opacity: 0.4; }
 
 @media (max-width: 900px) {
-  .viewer { grid-template-rows: 48px minmax(0, 1fr) 40px; }
+  .viewer { grid-template-rows: 48px minmax(0, 1fr) 48px; }
   .viewer-top { padding: 0 12px; }
   .viewer-brand { font-size: 0.78rem; }
-  .nav-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    font-size: 1.6rem;
-    z-index: 40;
-  }
-  .nav-prev { left: 4px; }
-  .nav-next { right: 4px; }
+  .nav-arrow { display: none; }
   .stage { padding: 6px 10px; overflow: hidden; }
   .book-viewport { width: auto; }
   .book-gutter { display: none !important; }
