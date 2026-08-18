@@ -7,8 +7,8 @@
   --muted: #5a6b7a;
   --title-size: 1.15rem;
   --body-size: 0.82rem;
-  --body: "Manrope", "Noto Sans SC", sans-serif;
-  --serif: "Noto Serif SC", "Noto Sans SC", serif;
+  --body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  --serif: "Songti SC", "STSong", "SimSun", "Noto Serif SC", serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -742,7 +742,7 @@ blockquote {
   z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   min-width: 0;
   padding: 0 10px;
@@ -751,16 +751,18 @@ blockquote {
   border-top: 1px solid rgba(30, 80, 90, 0.08);
 }
 .nav-foot {
+  display: none;
   flex: 0 0 auto;
-  min-width: 72px;
-  height: 34px;
-  padding: 0 12px;
+  min-width: 52px;
+  height: 26px;
+  padding: 0 8px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--blue-deep);
   color: #fff;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
@@ -776,11 +778,14 @@ blockquote {
 .page-indicator .sep { margin: 0 8px; opacity: 0.4; }
 
 @media (max-width: 900px) {
-  .viewer { grid-template-rows: 48px minmax(0, 1fr) 48px; }
+  .viewer { grid-template-rows: 48px minmax(0, 1fr) 40px; }
   .viewer-top { padding: 0 12px; }
   .viewer-brand { font-size: 0.78rem; }
   .nav-arrow { display: none; }
-  .stage { padding: 6px 10px; overflow: hidden; }
+  .nav-foot { display: inline-flex; align-items: center; justify-content: center; }
+  .viewer-bottom { justify-content: space-between; padding: 0 12px; }
+  .page-indicator { font-size: 0.78rem; }
+  .stage { padding: 8px 12px 12px; overflow: hidden; }
   .book-viewport { width: auto; }
   .book-gutter { display: none !important; }
   .book-edge { display: none !important; }
