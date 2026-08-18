@@ -14,28 +14,47 @@
 
   let pageFlip = null;
   let isMobile = window.innerWidth <= 900;
+  let lastLayoutW = window.innerWidth;
+  let lastLayoutH = 0;
 
-  /** width = 单页宽；spreadWidth = 横屏双页总宽 */
+  function viewSize() {
+    const vv = window.visualViewport;
+    return {
+      w: Math.round(window.innerWidth),
+      h: Math.round(vv && vv.height ? vv.height : window.innerHeight),
+    };
+  }
+
+  /** width = 单页宽；spreadWidth = 横屏双页总宽。手机铺满舞台，封面和内页同一尺寸。 */
   function sizeBook() {
-    const mobile = window.innerWidth <= 900;
-    const h = Math.min(660, Math.max(480, window.innerHeight - 120));
+    const { w, h } = viewSize();
+    const mobile = w <= 900;
     if (mobile) {
-      const pageW = Math.min(420, Math.floor(window.innerWidth * 0.92));
+      const pageW = Math.max(260, w - 20);
+      const pageH = Math.max(360, h - 48 - 40 - 12);
       return {
         pageWidth: pageW,
         spreadWidth: pageW,
-        height: Math.min(h, Math.floor(pageW * 1.38)),
+        height: pageH,
         usePortrait: true,
       };
     }
-    const maxSpread = Math.min(920, Math.max(680, Math.floor(window.innerWidth - 120)));
+    const maxSpread = Math.min(920, Math.max(680, Math.floor(w - 120)));
     const pageWidth = Math.floor(maxSpread / 2);
     return {
       pageWidth: pageWidth,
       spreadWidth: pageWidth * 2,
-      height: h,
+      height: Math.min(660, Math.max(480, h - 120)),
       usePortrait: false,
     };
+  }
+
+  function applyBookBox(s) {
+    if (!bookEl || !bookViewport) return;
+    bookViewport.style.width = s.spreadWidth + "px";
+    bookViewport.style.height = s.height + "px";
+    bookEl.style.width = s.spreadWidth + "px";
+    bookEl.style.height = s.height + "px";
   }
 
   function resetBook() {
@@ -79,10 +98,15 @@
     bookViewport.style.width = sw + "px";
 
     if (portrait) {
-      bookShell.classList.remove("mode-cover", "mode-back", "mode-spread");
-      bookShell.style.width = "";
+      bookShell.classList.remove("mode-cover", "mode-back");
+      bookShell.classList.add("mode-spread");
+      bookShell.style.width = pw + "px";
+      bookViewport.style.width = pw + "px";
+      bookViewport.style.height = s.height + "px";
       bookViewport.style.transform = "";
-      bookViewport.style.overflow = "";
+      bookViewport.style.overflow = "hidden";
+      bookEl.style.width = pw + "px";
+      bookEl.style.height = s.height + "px";
       return;
     }
 
@@ -240,6 +264,8 @@
   function mount(startPage) {
     resetBook();
     const s = sizeBook();
+    applyBookBox(s);
+    const mobile = s.usePortrait;
 
     pageFlip = new St.PageFlip(bookEl, {
       width: s.pageWidth,
@@ -249,16 +275,16 @@
       maxWidth: s.pageWidth,
       minHeight: s.height,
       maxHeight: s.height,
-      drawShadow: true,
-      flippingTime: 800,
-      usePortrait: s.usePortrait,
+      drawShadow: !mobile,
+      flippingTime: mobile ? 520 : 800,
+      usePortrait: mobile,
       startPage: startPage || 0,
       autoSize: false,
-      maxShadowOpacity: 0.28,
-      showCover: true,
-      mobileScrollSupport: false,
+      maxShadowOpacity: mobile ? 0 : 0.28,
+      showCover: !mobile,
+      mobileScrollSupport: true,
       swipeDistance: 30,
-      useMouseEvents: true,
+      useMouseEvents: !mobile,
       disableFlipByClick: !!(window.AIWeeklyConfig && window.AIWeeklyConfig.disableFlipByClick),
     });
 
@@ -285,8 +311,18 @@
   }
 
   function relayout() {
-    const mobile = window.innerWidth <= 900;
+    if (pageFlip && pageFlip.getState() !== "read") return;
+
+    const { w, h } = viewSize();
+    const mobile = w <= 900;
     const idx = pageFlip ? pageFlip.getCurrentPageIndex() : 0;
+
+    if (mobile && Math.abs(w - lastLayoutW) < 24 && Math.abs(h - lastLayoutH) < 80) {
+      return;
+    }
+
+    lastLayoutW = w;
+    lastLayoutH = h;
 
     if (!pageFlip || mobile !== isMobile) {
       isMobile = mobile;
@@ -295,6 +331,8 @@
       return;
     }
 
+    const s = sizeBook();
+    applyBookBox(s);
     pageFlip.update();
     try {
       pageFlip.turnToPage(idx);
@@ -302,6 +340,16 @@
     syncAll({ data: idx });
   }
 
+  document.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!e.target.closest("#book")) e.preventDefault();
+    },
+    { passive: false }
+  );
+
+  lastLayoutW = viewSize().w;
+  lastLayoutH = viewSize().h;
   mount(0);
 
   prevBtn.addEventListener("click", () => pageFlip && pageFlip.flipPrev());
@@ -316,10 +364,9 @@
   let t;
   function onResize() {
     clearTimeout(t);
-    t = setTimeout(relayout, 220);
+    t = setTimeout(relayout, 280);
   }
   window.addEventListener("resize", onResize);
-  if (window.visualViewport) visualViewport.addEventListener("resize", onResize);
 
   function shadeRgb(r, g, b, k) {
     return [
