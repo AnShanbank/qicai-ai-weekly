@@ -65,6 +65,9 @@ body {
   object-fit: contain;
   object-position: left center;
   flex: 0 0 auto;
+  filter: none !important;
+  -webkit-filter: none !important;
+  forced-color-adjust: none;
 }
 .viewer-brand {
   font-size: 0.86rem;
