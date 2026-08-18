@@ -12,20 +12,28 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
 
 body {
   font-family: var(--body);
   color: var(--ink);
-  overflow: hidden;
   background: #e7f3f1;
+  position: fixed;
+  inset: 0;
 }
 
 .viewer {
   height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-rows: 52px 1fr 44px;
+  grid-template-rows: 52px minmax(0, 1fr) 44px;
   position: relative;
+  overflow: hidden;
   background:
     radial-gradient(900px 480px at 8% -8%, #c5ebe3 0%, transparent 55%),
     radial-gradient(760px 420px at 100% 0%, #ffe6bc 0%, transparent 48%),
@@ -33,17 +41,29 @@ body {
 }
 
 .viewer-top {
-  z-index: 5;
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
   padding: 0 18px;
   background: rgba(255, 255, 255, 0.78);
   border-bottom: 1px solid rgba(30, 80, 90, 0.08);
   backdrop-filter: blur(8px);
 }
-.viewer-logo { height: 32px; width: auto; max-width: 170px; object-fit: contain; }
-.viewer-brand { font-size: 0.86rem; color: var(--muted); font-weight: 600; }
+.viewer-logo { height: 32px; width: auto; max-width: min(170px, 46vw); object-fit: contain; flex: 0 1 auto; }
+.viewer-brand {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 0 1 auto;
+  min-width: 0;
+}
 
 .nav-arrow {
   position: absolute;
@@ -66,10 +86,11 @@ body {
 
 .stage {
   min-height: 0;
+  min-width: 0;
   display: grid;
   place-items: center;
   padding: 12px 60px 18px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* —— 书本 —— */
@@ -88,7 +109,7 @@ body {
 
 #book {
   width: 100%;
-  height: min(660px, calc(100vh - 140px));
+  height: 100%;
   box-shadow: none;
   background: transparent;
 }
@@ -693,8 +714,11 @@ blockquote {
 .back-meta { margin-top: 16px; font-size: 0.76rem; opacity: 0.75; line-height: 1.8; }
 
 .viewer-bottom {
+  z-index: 30;
   display: grid;
   place-items: center;
+  min-width: 0;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.6);
   border-top: 1px solid rgba(30, 80, 90, 0.08);
 }
@@ -707,14 +731,12 @@ blockquote {
 .page-indicator .sep { margin: 0 8px; opacity: 0.4; }
 
 @media (max-width: 900px) {
+  .viewer { grid-template-rows: 48px minmax(0, 1fr) 40px; }
+  .viewer-top { padding: 0 12px; }
+  .viewer-brand { font-size: 0.78rem; }
   .nav-arrow { display: none; }
-  .stage { padding: 8px 12px; }
-  .book-viewport {
-    width: min(420px, 92vw);
-  }
-  #book {
-    height: min(calc(100vh - 130px), 620px);
-  }
+  .stage { padding: 6px 10px; overflow: hidden; }
+  .book-viewport { width: auto; }
   .book-gutter { display: none !important; }
   .book-edge { display: none !important; }
   .book-spine-cover { display: none !important; }
@@ -724,10 +746,19 @@ blockquote {
     width: auto;
     clip-path: none;
     filter: none;
-    box-shadow: none;
-    background: transparent;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    background: #fff;
+  }
+  .stf__innerShadow,
+  .stf__outerShadow,
+  .stf__hardShadow,
+  .stf__hardInnerShadow {
+    display: none !important;
   }
   .toc-grid { grid-template-columns: 1fr; }
   .meta { grid-template-columns: 1fr 1fr; }
   .art-body { text-align: left; }
+  .ch-copy { padding: 18px 16px 22px; }
+  .ch-num { font-size: 2.6rem; }
+  .ch-copy h2 { font-size: 1.5rem; }
 }
