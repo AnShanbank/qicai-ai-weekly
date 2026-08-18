@@ -284,7 +284,7 @@
       showCover: !mobile,
       mobileScrollSupport: false,
       swipeDistance: 20,
-      useMouseEvents: true,
+      useMouseEvents: !mobile,
       disableFlipByClick: !!(window.AIWeeklyConfig && window.AIWeeklyConfig.disableFlipByClick),
     });
 
@@ -344,13 +344,91 @@
   lastLayoutH = viewSize().h;
   mount(0);
 
-  prevBtn.addEventListener("click", () => pageFlip && pageFlip.flipPrev());
-  nextBtn.addEventListener("click", () => pageFlip && pageFlip.flipNext());
+  let navLock = 0;
+  function go(dir) {
+    if (!pageFlip) return;
+    const now = Date.now();
+    if (now - navLock < 280) return;
+    navLock = now;
+
+    const before = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+    if (dir > 0 && before >= total - 1) return;
+    if (dir < 0 && before <= 0) return;
+
+    const hardTurn = () => {
+      try {
+        dir > 0 ? pageFlip.turnToNextPage() : pageFlip.turnToPrevPage();
+      } catch (_) {}
+      syncAll();
+    };
+
+    try {
+      if (pageFlip.getState() !== "read") {
+        hardTurn();
+        return;
+      }
+      dir > 0 ? pageFlip.flipNext("bottom") : pageFlip.flipPrev("bottom");
+      setTimeout(() => {
+        if (!pageFlip) return;
+        if (pageFlip.getCurrentPageIndex() === before && pageFlip.getState() === "read") {
+          hardTurn();
+        }
+      }, 80);
+    } catch (_) {
+      hardTurn();
+    }
+  }
+
+  function bindTap(el, fn) {
+    if (!el) return;
+    const run = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      fn();
+    };
+    el.addEventListener("click", run);
+    el.addEventListener("touchend", run, { passive: false });
+  }
+
+  bindTap(prevBtn, () => go(-1));
+  bindTap(nextBtn, () => go(1));
+  bindTap(document.getElementById("prevBtnFoot"), () => go(-1));
+  bindTap(document.getElementById("nextBtnFoot"), () => go(1));
+
+  const stageEl = document.getElementById("stage") || bookEl;
+  let touchX = 0;
+  let touchY = 0;
+  let touchT = 0;
+  stageEl.addEventListener(
+    "touchstart",
+    (e) => {
+      if (!e.changedTouches.length) return;
+      touchX = e.changedTouches[0].clientX;
+      touchY = e.changedTouches[0].clientY;
+      touchT = Date.now();
+    },
+    { passive: true }
+  );
+  stageEl.addEventListener(
+    "touchend",
+    (e) => {
+      if (!e.changedTouches.length) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchX;
+      const dy = t.clientY - touchY;
+      if (Math.abs(dx) < 36 || Math.abs(dx) < Math.abs(dy)) return;
+      if (Date.now() - touchT > 900) return;
+      e.preventDefault();
+      go(dx < 0 ? 1 : -1);
+    },
+    { passive: false }
+  );
 
   window.addEventListener("keydown", (e) => {
     if (!pageFlip) return;
-    if (e.key === "ArrowRight" || e.key === "PageDown") pageFlip.flipNext();
-    if (e.key === "ArrowLeft" || e.key === "PageUp") pageFlip.flipPrev();
+    if (e.key === "ArrowRight" || e.key === "PageDown") go(1);
+    if (e.key === "ArrowLeft" || e.key === "PageUp") go(-1);
   });
 
   let t;
